@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+import Button from "../components/Button.astro";
 ---
 
 <Layout title="Home - My Awesome Website">
@@ -12,5 +14,12 @@ import Layout from "../layouts/Layout.astro";
       cumque possimus velit quaerat dolorum, dolores, modi dignissimos autem
       consequuntur sequi vel neque.
     </p>
+
+    <div class="flex gap-4">
+      <Button text="yes" keyboard />
+      <Button text="no" keyboard />
+      <Button text="help" keyboard />
+      <Button text="normal" />
+    </div>
   </div>
 </Layout>

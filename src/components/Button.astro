@@ -1,0 +1,78 @@
+---
+type Variant = "default";
+
+interface Props {
+  text: "yes" | "no" | "help" | string;
+  variant?: Variant;
+  keyboard?: boolean;
+}
+
+const { text, variant = "default", keyboard } = Astro.props;
+
+const keyboardText = keyboard && text.substring(0, 1);
+---
+
+<button class="button" data-variant={variant} data-keyboard={keyboardText}>
+  {text}
+</button>
+
+<style>
+  .button {
+    --_shadow: inset -2px -2px #262626, inset 2px 2px #f0f0f0,
+      inset -4px -4px #7e7e7e;
+    --_inverse-shadow: inset 2px 2px #262626, inset -2px -2px #f0f0f0,
+      inset 4px 4px #7e7e7e;
+
+    position: relative;
+
+    display: inline-block;
+
+    font-size: 1.5rem;
+    text-transform: capitalize;
+
+    padding-block: 0.55em; /* 13 */
+    padding-inline: 2.3em; /* 55 */
+
+    border: none;
+    outline: none;
+
+    box-shadow: var(--_shadow);
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      inset: 6px;
+      pointer-events: none;
+
+      opacity: 0;
+
+      border: 1px dashed var(--color-black);
+    }
+
+    /* variants */
+    &:where([data-variant="default"]) {
+      background-color: var(--color-neutral-100);
+      color: var(--color-black);
+    }
+
+    /* states */
+    &:where(:focus-visible, .focus) {
+      outline: 2px solid var(--color-black);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &:where(:active) {
+      box-shadow: var(--_inverse-shadow);
+      background-color: var(--color-neutral-200);
+    }
+
+    /* keyboard */
+    &[data-keyboard]::first-letter {
+      border-bottom: 2px solid var(--color-black);
+    }
+  }
+</style>
