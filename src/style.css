@@ -1,0 +1,42 @@
+@layer reset, base, layout, utilities;
+
+@import "open-props/style";
+
+@import "styles/abstracts/media.css";
+@import "styles/abstracts/selectors.css";
+
+/* base */
+@import "styles/base/reset.css" layer(reset);
+@import "styles/base/base.css" layer(base);
+@import "styles/base/root.css" layer(root);
+
+/* utilities */
+@import "styles/utilities/colors.css" layer(utilities.colors);
+@import "styles/utilities/flow.css" layer(utilities.flow);
+@import "styles/utilities/flex.css" layer(utilities.flex);
+@import "styles/utilities/grid.css" layer(utilities.grid);
+@import "styles/utilities/gap.css" layer(utilities.gap);
+@import "styles/utilities/padding.css" layer(utilities.padding);
+
+/* layout */
+@import "styles/layout/container.css" layer(layout.container);
+
+/* custom stuff */
+@layer reset.custom {
+  body {
+    margin: 0;
+  }
+
+  p:not([class]) {
+    max-width: 80ch;
+  }
+
+  :--headings {
+    margin-block-start: 0;
+  }
+
+  :--lists {
+    padding-inline-start: 0;
+    list-style-position: inside;
+  }
+}

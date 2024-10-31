@@ -1,0 +1,24 @@
+{
+  "name": "my_awesome_website",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "astro": "^4.16.8",
+    "open-props": "^1.7.7",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "postcss-custom-media": "^11.0.4",
+    "postcss-custom-selectors": "^8.0.3"
+  }
+}

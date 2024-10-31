@@ -1,0 +1,29 @@
+.grid {
+  display: grid;
+}
+
+.inline-grid {
+  display: inline-grid;
+}
+
+.place-items-center {
+  place-items: center;
+}
+
+.items-start {
+  align-items: start;
+}
+
+.grid-cols-fit-1 {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--col-size, var(--size-content-1))), 1fr)
+  );
+}
+
+.grid-cols-fill-1 {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, var(--col-size, var(--size-content-1))), 1fr)
+  );
+}

@@ -1,0 +1,44 @@
+.container {
+  --container: 100%;
+  --min: var(--size-3);
+
+  display: grid;
+  grid-template-columns:
+    minmax(var(--min), 1fr)
+    min(var(--container), 100% - var(--min) * 2)
+    minmax(var(--min), 1fr);
+
+  > * {
+    grid-column: 2 / 3;
+  }
+}
+
+@media (--viewport-sm) {
+  .container {
+    --container: var(--container-max-width-sm);
+  }
+}
+
+@media (--viewport-md) {
+  .container {
+    --container: var(--container-max-width-md);
+  }
+}
+
+@media (--viewport-lg) {
+  .container {
+    --container: var(--container-max-width-lg);
+  }
+}
+
+@media (--viewport-xl) {
+  .container {
+    --container: var(--container-max-width-xl);
+  }
+}
+
+@media (--viewport-xxl) {
+  .container {
+    --container: var(--container-max-width-xxl);
+  }
+}

@@ -1,0 +1,119 @@
+.text-white {
+  color: var(--color-white);
+}
+
+.bg-white {
+  background-color: var(--color-white);
+}
+
+.text-black {
+  color: var(--color-black);
+}
+
+.bg-black {
+  background-color: var(--color-black);
+}
+
+/* neutrals */
+
+.text-neutral-50 {
+  color: hsl(from var(--color-neutral-50) var(--h, h) var(--s, s) var(--l, l));
+}
+.text-neutral-100 {
+  color: hsl(from var(--color-neutral-100) var(--h, h) var(--s, s) var(--l, l));
+}
+.text-neutral-200 {
+  color: hsl(from var(--color-neutral-200) var(--h, h) var(--s, s) var(--l, l));
+}
+.text-neutral-300 {
+  color: hsl(from var(--color-neutral-300) var(--h, h) var(--s, s) var(--l, l));
+}
+
+.bg-neutral-50 {
+  background-color: hsl(
+    from var(--color-neutral-50) var(--h, h) var(--s, s) var(--l, l)
+  );
+}
+.bg-neutral-100 {
+  background-color: hsl(
+    from var(--color-neutral-100) var(--h, h) var(--s, s) var(--l, l)
+  );
+}
+.bg-neutral-200 {
+  background-color: hsl(
+    from var(--color-neutral-200) var(--h, h) var(--s, s) var(--l, l)
+  );
+}
+.bg-neutral-300 {
+  background-color: hsl(
+    from var(--color-neutral-300) var(--h, h) var(--s, s) var(--l, l)
+  );
+}
+
+/* reds */
+
+.text-red-100 {
+  color: hsl(from var(--color-red-100) var(--h, h) var(--s, s) var(--l, l));
+}
+.text-red-200 {
+  color: hsl(from var(--color-red-200) var(--h, h) var(--s, s) var(--l, l));
+}
+
+.bg-red-100 {
+  background-color: hsl(
+    from var(--color-red-100) var(--h, h) var(--s, s) var(--l, l)
+  );
+}
+.bg-red-200 {
+  background-color: hsl(
+    from var(--color-red-200) var(--h, h) var(--s, s) var(--l, l)
+  );
+}
+
+/* greens */
+
+.text-green-100 {
+  color: hsl(from var(--color-green-100) var(--h, h) var(--s, s) var(--l, l));
+}
+.text-green-200 {
+  color: hsl(from var(--color-green-200) var(--h, h) var(--s, s) var(--l, l));
+}
+
+.bg-green-100 {
+  background-color: hsl(
+    from var(--color-green-100) var(--h, h) var(--s, s) var(--l, l)
+  );
+}
+.bg-green-200 {
+  background-color: hsl(
+    from var(--color-green-200) var(--h, h) var(--s, s) var(--l, l)
+  );
+}
+
+/* blues */
+
+.text-blue-50 {
+  color: hsl(from var(--color-blue-50) var(--h, h) var(--s, s) var(--l, l));
+}
+.text-blue-100 {
+  color: hsl(from var(--color-blue-100) var(--h, h) var(--s, s) var(--l, l));
+}
+.text-blue-200 {
+  color: hsl(from var(--color-blue-200) var(--h, h) var(--s, s) var(--l, l));
+}
+
+.bg-blue-50 {
+  background-color: hsl(
+    from var(--color-blue-50) var(--h, h) var(--s, s) var(--l, l)
+  );
+}
+.bg-blue-100 {
+  background-color: hsl(
+    from var(--color-blue-100) var(--h, h) var(--s, s) var(--l, l)
+  );
+}
+.bg-blue-200 {
+  background-color: hsl(
+    from var(--color-blue-200) var(--h, h) var(--s, s) var(--l, l)
+  );
+}
