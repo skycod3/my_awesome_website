@@ -22,4 +22,6 @@
   --color-blue-50: #001cf5;
   --color-blue-100: #000ea3;
   --color-blue-200: #02007f;
+
+  --font-family-base: "Oldschool", var(--font-sans);
 }

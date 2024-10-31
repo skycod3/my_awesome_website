@@ -9,6 +9,7 @@
 @import "styles/base/reset.css" layer(reset);
 @import "styles/base/base.css" layer(base);
 @import "styles/base/root.css" layer(root);
+@import "styles/base/fonts.css" layer(fonts);
 
 /* utilities */
 @import "styles/utilities/colors.css" layer(utilities.colors);

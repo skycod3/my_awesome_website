@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Oldschool";
+  src:
+    url("../../assets/fonts/oldschool.otf") format("opentype"),
+    url("../../assets/fonts/oldschool.woff") format("woff"),
+    url("../../assets/fonts/oldschool.woff2") format("woff2");
+  font-display: swap;
+}
