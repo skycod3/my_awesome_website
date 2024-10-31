@@ -18,6 +18,7 @@
 @import "styles/utilities/grid.css" layer(utilities.grid);
 @import "styles/utilities/gap.css" layer(utilities.gap);
 @import "styles/utilities/padding.css" layer(utilities.padding);
+@import "styles/utilities/margin.css" layer(utilities.margin);
 
 /* layout */
 @import "styles/layout/container.css" layer(layout.container);
