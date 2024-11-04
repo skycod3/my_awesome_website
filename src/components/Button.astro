@@ -5,18 +5,26 @@ interface Props {
   text: "yes" | "no" | "help" | string;
   variant?: Variant;
   keyboard?: boolean;
+  icon?: boolean;
+  size?: "sm";
 }
 
-const { text, variant = "default", keyboard } = Astro.props;
+const { text, variant = "default", keyboard, icon, size } = Astro.props;
 
 const keyboardText = keyboard && text.substring(0, 1);
 ---
 
-<button class="button" data-variant={variant} data-keyboard={keyboardText}>
+<button
+  class:list={["button", icon ? "icon-button" : ""]}
+  data-variant={variant}
+  data-size={size}
+  data-keyboard={keyboardText}
+>
   {text}
+  <slot />
 </button>
 
-<style>
+<style is:global>
   .button {
     --_shadow: inset -2px -2px #262626, inset 2px 2px #f0f0f0,
       inset -4px -4px #7e7e7e;
@@ -56,8 +64,14 @@ const keyboardText = keyboard && text.substring(0, 1);
       color: var(--color-black);
     }
 
+    &:where(.icon-button) {
+      display: flex;
+      align-items: center;
+      gap: var(--size-2);
+    }
+
     /* states */
-    &:where(:focus-visible, .focus) {
+    &:not(.disabled):where(:focus-visible, .focus) {
       outline: 2px solid var(--color-black);
 
       &::before {
@@ -65,7 +79,7 @@ const keyboardText = keyboard && text.substring(0, 1);
       }
     }
 
-    &:where(:active) {
+    &:not(.disabled):where(:active) {
       box-shadow: var(--_inverse-shadow);
       background-color: var(--color-neutral-200);
     }
@@ -73,6 +87,13 @@ const keyboardText = keyboard && text.substring(0, 1);
     /* keyboard */
     &[data-keyboard]::first-letter {
       border-bottom: 2px solid var(--color-black);
+    }
+
+    /* sizes */
+    &:where([data-size="sm"]) {
+      font-size: 18px;
+      padding-block: 0.5em;
+      padding-inline: 2em;
     }
   }
 </style>
