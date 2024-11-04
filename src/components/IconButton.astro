@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  type: "close" | "minimize" | "maximize" | "help";
+  disabled?: boolean;
+}
+
+const { type, disabled = false } = Astro.props;
+---
+
+<button
+  tabindex={disabled ? "-1" : null}
+  data-type={type}
+  class:list={["button icon-button", disabled ? "disabled" : ""]}
+>
+  {
+    type === "close" ? (
+      <Icon name="close" size={16} />
+    ) : type === "minimize" ? (
+      <Icon name="minimize" size={16} />
+    ) : type === "maximize" ? (
+      <Icon name={disabled ? "maximize-disabled" : "maximize"} size={16} />
+    ) : (
+      <Icon name="help" size={16} />
+    )
+  }
+</button>
+
+<style>
+  .icon-button {
+    --shadow: inset -2px -2px #262626, inset 2px 2px #f0f0f0,
+      inset -4px -4px #7e7e7e;
+
+    padding: 0;
+    width: var(--size-7);
+    aspect-ratio: 1;
+
+    background-color: var(--color-neutral-100);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: var(--shadow);
+  }
+</style>
