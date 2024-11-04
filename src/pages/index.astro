@@ -1,7 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+import Warning from "../assets/images/warning.svg";
+
 import Button from "../components/Button.astro";
+import Window from "../components/Window.astro";
 ---
 
 <Layout title="Home - My Awesome Website">
@@ -20,6 +23,28 @@ import Button from "../components/Button.astro";
       <Button text="no" keyboard />
       <Button text="help" keyboard />
       <Button text="normal" />
+    </div>
+
+    <div class="mt-4">
+      <Window title="Internet Explorer">
+        <div class="flex gap-4">
+          <div>
+            <img src={Warning.src} alt="" style="margin-top: .3lh;" />
+          </div>
+
+          <div class="flow">
+            <p class="text-black">
+              Internet Explorer 3.0 is not currently your default browser. Would
+              you like to make it your default browser?
+            </p>
+
+            <div class="flex justify-end gap-4">
+              <Button text="yes" keyboard size="sm" />
+              <Button text="no" keyboard size="sm" />
+            </div>
+          </div>
+        </div>
+      </Window>
     </div>
   </div>
 </Layout>
