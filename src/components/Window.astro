@@ -1,0 +1,84 @@
+---
+import IconButton from "./IconButton.astro";
+
+import { v4 as uuidv4 } from "uuid";
+
+interface Props {
+  icon?: string;
+  title: string;
+  buttons?: {
+    close: boolean;
+    minimize: boolean;
+    maximize: boolean;
+    help: boolean;
+  };
+}
+
+const { title } = Astro.props;
+---
+
+<div class="window">
+  <div class="top-bar">
+    <div class="flex justify-between items-center">
+      <h2 class="title">{title}</h2>
+
+      <div class="flex gap-1">
+        <IconButton type="minimize" />
+        <IconButton type="maximize" disabled />
+        <IconButton type="help" />
+        <IconButton type="close" />
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="p-4">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  .window {
+    --_shadow: inset -1px -1px #000000, inset 1px 1px #dbdbdb,
+      inset -2px -2px #808080, inset 2px 2px #ffffff;
+
+    box-shadow: var(--_shadow);
+    background-color: var(--color-neutral-100);
+
+    max-width: var(--size-sm);
+    padding: var(--size-1);
+
+    .top-bar {
+      padding: var(--size-1);
+      background-image: linear-gradient(
+        to right,
+        var(--color-blue-200),
+        var(--color-blue-50)
+      );
+    }
+
+    .title {
+      color: var(--color-white);
+      font-size: var(--font-size-3);
+      font-weight: var(--font-weight-4);
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import Draggable from "gsap/Draggable";
+
+  const windows = document.querySelectorAll(".window");
+
+  gsap.registerPlugin(Draggable);
+
+  windows.forEach((window) => {
+    Draggable.create(window, {
+      type: "x,y",
+      bounds: document.querySelector("main"),
+      inertia: true,
+    });
+  });
+</script>
