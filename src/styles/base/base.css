@@ -3,4 +3,12 @@
   font-size: var(--font-size-1);
   font-weight: var(--font-weight-4);
   line-height: var(--font-lineheight-4);
+
+  color: var(--color-white);
+  background-color: var(--color-green-200);
+}
+
+:where(body) {
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
