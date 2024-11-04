@@ -1,0 +1,66 @@
+---
+import Logo from "../assets/images/logo.svg";
+import Volume from "../assets/images/volume.svg";
+
+import Button from "./Button.astro";
+---
+
+<div class="bottom-bar">
+  <div class="flex justify-between items-center">
+    <Button text="" icon size="sm">
+      <img src={Logo.src} width="20" alt="Windows 98 logo" />
+      <span>Start</span>
+    </Button>
+
+    <div class="notifications">
+      <div class="flex gap-2 text-black">
+        <img src={Volume.src} width="20" alt="Volume" />
+        <span class="time"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .bottom-bar {
+    --_shadow: inset 2px 2px #f0f0f0;
+
+    box-shadow: var(--_shadow);
+
+    align-self: end;
+
+    background-color: var(--color-neutral-100);
+
+    padding: var(--size-2);
+
+    .notifications {
+      --_shadow: inset -2px -2px #f0f0f0, inset 2px 2px #7e7e7e;
+
+      padding: var(--size-1) var(--size-2);
+
+      box-shadow: var(--_shadow);
+    }
+  }
+</style>
+
+<script>
+  const bottomBar = document.querySelector(".bottom-bar");
+
+  if (bottomBar) {
+    const time = bottomBar.querySelector(".time")!;
+
+    function runTime() {
+      const date = new Date();
+
+      time.textContent = `${date.toLocaleString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      })}`;
+
+      requestAnimationFrame(runTime);
+    }
+
+    requestAnimationFrame(runTime);
+  }
+</script>
