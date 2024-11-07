@@ -1,0 +1,68 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description?: string;
+  selected?: boolean;
+}
+
+const { icon, title, description, selected = false } = Astro.props;
+---
+
+<button
+  data-selected={selected}
+  class="desktop-icon"
+  title={description}
+  aria-label={title}
+>
+  <img src={icon} alt={title} width="56" height="56" />
+  <span>{title}</span>
+</button>
+
+<style>
+  .desktop-icon {
+    display: grid;
+    gap: var(--size-1);
+
+    border: none;
+    border-radius: var(--radius-2);
+    text-align: center;
+
+    background-color: transparent;
+    color: var(--color-white);
+
+    padding: var(--size-1) var(--size-3);
+
+    &:hover:not(:is(:focus-visible, [data-selected])) {
+      background-color: hsl(from var(--color-neutral-300) h s l / 0.5);
+    }
+
+    &:focus-visible {
+      background-color: hsl(from var(--color-blue-50) h s calc(l * 1.2));
+      outline: none;
+    }
+
+    &[data-selected] {
+      background-color: var(--color-blue-50);
+    }
+  }
+</style>
+
+<script>
+  const desktopIcons = document.querySelectorAll(".desktop-icon");
+
+  if (desktopIcons) {
+    desktopIcons.forEach((icon) => {
+      icon.addEventListener("click", (ev) => {
+        desktopIcons.forEach((icon) => icon.removeAttribute("data-selected"));
+        icon.setAttribute("data-selected", "true");
+
+        ev.stopPropagation();
+      });
+    });
+
+    document.body.addEventListener("click", () => {
+      desktopIcons.forEach((icon) => icon.removeAttribute("data-selected"));
+    });
+  }
+</script>
