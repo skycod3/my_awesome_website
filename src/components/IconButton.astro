@@ -1,18 +1,22 @@
 ---
 import { Icon } from "astro-icon/components";
+import Popover from "./Popover.astro";
 
 interface Props {
   type: "close" | "minimize" | "maximize" | "help";
   disabled?: boolean;
+  popover?: string;
 }
 
-const { type, disabled = false } = Astro.props;
+const { type, disabled = false, popover } = Astro.props;
 ---
 
 <button
+  style={`anchor-name: --popover-${type}`}
   tabindex={disabled ? "-1" : null}
   data-type={type}
   class:list={["button icon-button", disabled ? "disabled" : ""]}
+  popovertarget={popover}
 >
   {
     type === "close" ? (
@@ -26,6 +30,20 @@ const { type, disabled = false } = Astro.props;
     )
   }
 </button>
+
+{
+  popover && (
+    <Popover id={popover} anchor={`--popover-${type}`}>
+      <div class="flow | p-4">
+        <h2>Popover Title</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
+          laboriosam, voluptates tempore provident cumque omnis!
+        </p>
+      </div>
+    </Popover>
+  )
+}
 
 <style>
   .icon-button {
