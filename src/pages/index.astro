@@ -2,9 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 
 import Warning from "../assets/images/warning.svg";
+import Documents from "../assets/images/documents.svg";
+import Find from "../assets/images/find.svg";
+import RecycleBin from "../assets/images/recycle-bin.svg";
 
 import Button from "../components/Button.astro";
 import Window from "../components/Window.astro";
+import DesktopIcon from "../components/DesktopIcon.astro";
 ---
 
 <Layout title="Home - My Awesome Website">
@@ -45,6 +49,28 @@ import Window from "../components/Window.astro";
           </div>
         </div>
       </Window>
+    </div>
+
+    <div class="mt-4">
+      <div class="flex gap-4">
+        <DesktopIcon
+          icon={Documents.src}
+          title="Portfólio"
+          description="Meu Portfólio"
+        />
+
+        <DesktopIcon
+          icon={Find.src}
+          title="Currículo"
+          description="Meu Currículo"
+        />
+
+        <DesktopIcon
+          icon={RecycleBin.src}
+          title="Lixeira"
+          description="Esvaziar lixeira?"
+        />
+      </div>
     </div>
   </div>
 </Layout>
