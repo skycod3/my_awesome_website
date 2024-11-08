@@ -1,16 +1,70 @@
 ---
+import { Icon } from "astro-icon/components";
+
 import Logo from "../assets/images/logo.svg";
 import Volume from "../assets/images/volume.svg";
 
+import ProgramFolder from "../assets/images/program-folder.svg";
+import DocumentsFolder from "../assets/images/documents-folder.svg";
+import Settings from "../assets/images/settings.svg";
+
 import Button from "./Button.astro";
+import Dropdown from "./Dropdown.astro";
 ---
 
 <div class="bottom-bar">
   <div class="flex justify-between items-center">
-    <Button text="" icon size="sm">
+    <Button id="start-button" text="" icon size="sm" dropdownToggle="dropdown">
       <img src={Logo.src} width="20" alt="Windows 98 logo" />
       <span>Start</span>
     </Button>
+
+    <!-- Dropdown menu -->
+    <Dropdown id="dropdown">
+      <ul>
+        <li>
+          <Button
+            text=""
+            icon
+            variant="no-shadow"
+            dropdownToggle="dropdown-programs"
+            dropdownPlacement="right-start"
+          >
+            <div class="flex gap-3 items-center">
+              <img src={ProgramFolder.src} alt="" width="40" />
+              Programs
+            </div>
+
+            <Icon style="margin-left: auto;" name="caret-right" size={16} />
+          </Button>
+
+          <Dropdown id="dropdown-programs">
+            <ul>
+              <li>
+                <button class="flex gap-3 items-center">
+                  <img src={ProgramFolder.src} alt="" width="40" />
+                  Games
+                </button>
+              </li>
+            </ul>
+          </Dropdown>
+        </li>
+
+        <li>
+          <button class="flex gap-3 items-center">
+            <img src={DocumentsFolder.src} alt="" width="40" />
+            Documents
+          </button>
+        </li>
+
+        <li>
+          <button class="flex gap-3 items-center">
+            <img src={Settings.src} alt="" width="40" />
+            Settings
+          </button>
+        </li>
+      </ul>
+    </Dropdown>
 
     <div class="notifications">
       <div class="flex gap-2 text-black">
