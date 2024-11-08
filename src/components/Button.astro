@@ -2,6 +2,7 @@
 type Variant = "default" | "no-shadow";
 
 interface Props {
+  id?: string;
   text: "yes" | "no" | "help" | string;
   variant?: Variant;
   keyboard?: boolean;
@@ -12,6 +13,7 @@ interface Props {
 }
 
 const {
+  id,
   text,
   variant = "default",
   keyboard,
@@ -25,6 +27,7 @@ const keyboardText = keyboard && text.substring(0, 1);
 ---
 
 <button
+  id={id}
   class:list={["button", icon ? "icon-button" : ""]}
   data-variant={variant}
   data-size={size}
