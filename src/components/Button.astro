@@ -7,9 +7,19 @@ interface Props {
   keyboard?: boolean;
   icon?: boolean;
   size?: "sm";
+  dropdownToggle?: string;
+  dropdownPlacement?: "right-start";
 }
 
-const { text, variant = "default", keyboard, icon, size } = Astro.props;
+const {
+  text,
+  variant = "default",
+  keyboard,
+  icon,
+  size,
+  dropdownToggle,
+  dropdownPlacement,
+} = Astro.props;
 
 const keyboardText = keyboard && text.substring(0, 1);
 ---
@@ -19,6 +29,8 @@ const keyboardText = keyboard && text.substring(0, 1);
   data-variant={variant}
   data-size={size}
   data-keyboard={keyboardText}
+  data-dropdown-toggle={dropdownToggle}
+  data-dropdown-placement={dropdownPlacement}
 >
   {text}
   <slot />
