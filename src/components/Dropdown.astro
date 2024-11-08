@@ -1,0 +1,71 @@
+---
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<div id={id} class="dropdown | hidden">
+  <slot />
+</div>
+
+<style>
+  .dropdown {
+    --_shadow: inset -2px -2px #262626, inset 2px 2px #f0f0f0,
+      inset -4px -4px #7e7e7e;
+
+    box-shadow: var(--_shadow);
+
+    width: min(100%, 19rem);
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 2px;
+    }
+
+    button {
+      outline: none;
+      border: none;
+
+      width: calc(100% - 2px);
+
+      background-color: var(--color-neutral-100);
+      color: var(--color-black);
+
+      font-size: var(--font-size-3);
+
+      padding-block: var(--size-3);
+      padding-inline: var(--size-3);
+
+      /* states */
+      &:where(:hover, :focus-visible) {
+        background-color: var(--color-blue-100);
+        color: var(--color-white);
+      }
+
+      &:not(#start-button):has(+ .dropdown.block) {
+        background-color: var(--color-blue-100);
+        color: var(--color-white);
+      }
+    }
+
+    .dropdown {
+      button {
+        padding-block: var(--size-2);
+        padding-inline: var(--size-2);
+
+        img {
+          width: 25px;
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  import { Dropdown } from "flowbite";
+
+  console.log(Dropdown.name, "loaded!");
+</script>
