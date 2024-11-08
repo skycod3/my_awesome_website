@@ -1,5 +1,5 @@
 ---
-type Variant = "default";
+type Variant = "default" | "no-shadow";
 
 interface Props {
   text: "yes" | "no" | "help" | string;
@@ -62,6 +62,10 @@ const keyboardText = keyboard && text.substring(0, 1);
     &:where([data-variant="default"]) {
       background-color: var(--color-neutral-100);
       color: var(--color-black);
+    }
+
+    &:where([data-variant="no-shadow"]) {
+      --_shadow: none;
     }
 
     &:where(.icon-button) {
