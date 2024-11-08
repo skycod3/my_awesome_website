@@ -12,6 +12,7 @@
 @import "styles/base/fonts.css" layer(fonts);
 
 /* utilities */
+@import "styles/utilities/display.css" layer(utilities.display);
 @import "styles/utilities/colors.css" layer(utilities.colors);
 @import "styles/utilities/flow.css" layer(utilities.flow);
 @import "styles/utilities/flex.css" layer(utilities.flex);
