@@ -1,0 +1,63 @@
+---
+import BgTab from "../assets/images/bg-tab.png";
+
+interface Props {
+  title: string;
+  icon: string;
+  active?: boolean;
+}
+
+const { title, icon, active = false } = Astro.props;
+---
+
+<div class:list={["tab", active ? "active" : ""]}>
+  <button
+    class="flex items-center gap-2"
+    style={{ backgroundImage: `url(${BgTab.src})` }}
+  >
+    <img src={icon} width="20" alt="" />
+    <span>{title}</span>
+  </button>
+</div>
+
+<style>
+  .tab {
+    --_shadow: inset -2px -2px #262626, inset 2px 2px #f0f0f0,
+      inset -4px -4px #7e7e7e;
+    --_shadow-active: inset 2px 2px #262626, inset -2px -2px #f0f0f0,
+      inset 4px 4px #7e7e7e, inset -4px -4px #b1b1b1;
+
+    padding: var(--size-1);
+    box-shadow: var(--_shadow);
+
+    button {
+      padding: var(--size-1) var(--size-2);
+      border: none;
+    }
+
+    &.active {
+      box-shadow: var(--_shadow-active);
+    }
+
+    &:not(.active) button {
+      background-color: var(--color-neutral-100);
+      background-image: none !important;
+    }
+
+    span {
+      -webkit-text-stroke: 0.3px var(--color-black);
+    }
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll(".tab");
+
+  if (tabs) {
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tab.classList.toggle("active");
+      });
+    });
+  }
+</script>
