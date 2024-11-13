@@ -7,9 +7,11 @@ import Volume from "../assets/images/volume.svg";
 import ProgramFolder from "../assets/images/program-folder.svg";
 import DocumentsFolder from "../assets/images/documents-folder.svg";
 import Settings from "../assets/images/settings.svg";
+import Internet from "../assets/images/internet.svg";
 
 import Button from "./Button.astro";
 import Dropdown from "./Dropdown.astro";
+import Tab from "./Tab.astro";
 ---
 
 <div class="bottom-bar">
@@ -65,6 +67,14 @@ import Dropdown from "./Dropdown.astro";
         </li>
       </ul>
     </Dropdown>
+
+    <div class="tabs">
+      <ul role="list" class="flex gap-2 m-0">
+        <li>
+          <Tab active title="Internet Explorer" icon={Internet.src} />
+        </li>
+      </ul>
+    </div>
 
     <div class="notifications">
       <div class="flex gap-2 text-black">
