@@ -1,6 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 
+import { tabs } from "../data";
+
 import Logo from "../assets/images/logo.svg";
 import Volume from "../assets/images/volume.svg";
 
@@ -68,12 +70,8 @@ import Tab from "./Tab.astro";
       </ul>
     </Dropdown>
 
-    <div class="tabs">
-      <ul role="list" class="flex gap-2 m-0">
-        <li>
-          <Tab active title="Internet Explorer" icon={Internet.src} />
-        </li>
-      </ul>
+    <div class="tabs | flex flex-wrap gap-2">
+      {tabs.map((tab) => <Tab id={tab.id} title={tab.title} icon={tab.icon} />)}
     </div>
 
     <div class="notifications">
