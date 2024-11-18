@@ -18,6 +18,8 @@ const { title } = Astro.props;
 <div class="window">
   <div class="top-bar">
     <div class="flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        {icon && <img src={icon} width="20" alt="" />}
       <h2 class="title">{title}</h2>
 
       <div class="flex gap-1">
