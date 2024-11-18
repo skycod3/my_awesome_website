@@ -4,13 +4,26 @@ interface Props {
   title: string;
   description?: string;
   selected?: boolean;
+  windowTarget: string;
+  tabTarget: string;
 }
 
-const { icon, title, description, selected = false } = Astro.props;
+const {
+  icon,
+  title,
+  description,
+  selected = false,
+  windowTarget,
+  tabTarget,
+} = Astro.props;
 ---
 
 <button
+  data-title={title}
+  data-icon={icon}
   data-selected={selected}
+  data-window-target={windowTarget}
+  data-tab-target={tabTarget}
   class="desktop-icon"
   title={description}
   aria-label={title}
