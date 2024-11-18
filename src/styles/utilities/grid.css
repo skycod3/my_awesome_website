@@ -10,6 +10,14 @@
   place-items: center;
 }
 
+.place-content-start {
+  place-content: start;
+}
+
+.justify-start {
+  justify-content: start;
+}
+
 .items-start {
   align-items: start;
 }
