@@ -62,16 +62,27 @@ const {
 </style>
 
 <script>
+  import { Process } from "../lib/process";
+
   const desktopIcons = document.querySelectorAll(".desktop-icon");
 
   if (desktopIcons) {
-    desktopIcons.forEach((icon) => {
-      icon.addEventListener("click", (ev) => {
+    desktopIcons.forEach((desktopIcon) => {
+      const windowTarget = desktopIcon.getAttribute("data-window-target");
+      const tabTarget = desktopIcon.getAttribute("data-tab-target");
+
+      desktopIcon.addEventListener("click", (ev) => {
         desktopIcons.forEach((icon) => icon.removeAttribute("data-selected"));
-        icon.setAttribute("data-selected", "true");
+        desktopIcon.setAttribute("data-selected", "true");
 
         ev.stopPropagation();
       });
+
+      if (windowTarget && tabTarget) {
+        desktopIcon.addEventListener("dblclick", () => {
+          new Process({ windowTarget, tabTarget });
+        });
+      }
     });
 
     document.body.addEventListener("click", () => {
