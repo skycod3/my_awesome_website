@@ -49,15 +49,3 @@ const { title, icon, active = false } = Astro.props;
     }
   }
 </style>
-
-<script>
-  const tabs = document.querySelectorAll(".tab");
-
-  if (tabs) {
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        tab.classList.toggle("active");
-      });
-    });
-  }
-</script>
