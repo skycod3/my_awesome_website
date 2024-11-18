@@ -1,76 +1,82 @@
 ---
+import { desktopIcons, windows } from "../data";
+
 import Layout from "../layouts/Layout.astro";
 
-import Warning from "../assets/images/warning.svg";
-import Documents from "../assets/images/documents.svg";
-import Find from "../assets/images/find.svg";
-import RecycleBin from "../assets/images/recycle-bin.svg";
-
-import Button from "../components/Button.astro";
 import Window from "../components/Window.astro";
 import DesktopIcon from "../components/DesktopIcon.astro";
 ---
 
 <Layout title="Home - My Awesome Website">
-  <div class="container">
-    <h1>My Awesome Website</h1>
+  <div class="desktop">
+    <div class="desktop-icons">
+      {
+        desktopIcons.map((icon) => (
+          <DesktopIcon
+            icon={icon.icon}
+            title={icon.title}
+            description={icon.description}
+            windowTarget={icon.windowTarget}
+            tabTarget={icon.tabTarget}
+          />
+        ))
+      }
 
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-      accusamus placeat ratione! Placeat sapiente quasi provident, repudiandae
-      cumque possimus velit quaerat dolorum, dolores, modi dignissimos autem
-      consequuntur sequi vel neque.
-    </p>
-
-    <div class="flex gap-4 mt-4">
-      <Button text="yes" keyboard />
-      <Button text="no" keyboard />
-      <Button text="help" keyboard />
-      <Button text="normal" />
+      {
+        windows.map((window) => (
+          <Window
+            id={window.id}
+            icon={window.icon}
+            title={window.title}
+            buttons={window.buttons}
+          >
+            <div set:html={window.content} />
+          </Window>
+        ))
+      }
     </div>
 
-    <div class="mt-4">
-      <Window title="Internet Explorer">
-        <div class="flex gap-4">
-          <div>
-            <img src={Warning.src} alt="" style="margin-top: .3lh;" />
-          </div>
-
-          <div class="flow">
-            <p class="text-black">
-              Internet Explorer 3.0 is not currently your default browser. Would
-              you like to make it your default browser?
-            </p>
-
-            <div class="flex justify-end gap-4">
-              <Button text="yes" keyboard size="sm" />
-              <Button text="no" keyboard size="sm" />
-            </div>
-          </div>
-        </div>
-      </Window>
-    </div>
-
-    <div class="mt-4">
-      <div class="flex gap-4">
-        <DesktopIcon
-          icon={Documents.src}
-          title="Portfólio"
-          description="Meu Portfólio"
-        />
-
-        <DesktopIcon
-          icon={Find.src}
-          title="Currículo"
-          description="Meu Currículo"
-        />
-
-        <DesktopIcon
-          icon={RecycleBin.src}
-          title="Lixeira"
-          description="Esvaziar lixeira?"
-        />
-      </div>
-    </div>
+    <div class="processes"></div>
   </div>
 </Layout>
+
+<style>
+  .desktop {
+    display: grid;
+    gap: var(--size-4);
+
+    height: 100%;
+
+    grid-template-columns: auto 1fr 10ch;
+
+    .desktop-icons {
+      position: relative;
+
+      grid-row: 1 / -1;
+      grid-column: 1 / -1;
+
+      display: grid;
+      place-content: start;
+      gap: var(--size-4);
+
+      grid-template-columns: subgrid;
+
+      button {
+        grid-column: 1 / 2;
+      }
+
+      .window {
+        grid-column: 2 / 3;
+      }
+    }
+
+    .processes {
+      display: grid;
+
+      place-content: center;
+
+      grid-row: 1 / -1;
+      grid-column: 2 / 3;
+    }
+  }
+</style>
