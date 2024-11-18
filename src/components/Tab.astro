@@ -2,15 +2,17 @@
 import BgTab from "../assets/images/bg-tab.png";
 
 interface Props {
+  id: string;
   title: string;
   icon: string;
   active?: boolean;
+  init?: boolean;
 }
 
-const { title, icon, active = false } = Astro.props;
+const { id, title, icon, active = false, init = false } = Astro.props;
 ---
 
-<div class:list={["tab", active ? "active" : ""]}>
+<div id={id} class:list={["tab", active ? "active" : ""]} data-init={init}>
   <button
     class="flex items-center gap-2"
     style={{ backgroundImage: `url(${BgTab.src})` }}
@@ -27,12 +29,18 @@ const { title, icon, active = false } = Astro.props;
     --_shadow-active: inset 2px 2px #262626, inset -2px -2px #f0f0f0,
       inset 4px 4px #7e7e7e, inset -4px -4px #b1b1b1;
 
+    display: none;
+
     padding: var(--size-1);
     box-shadow: var(--_shadow);
 
     button {
       padding: var(--size-1) var(--size-2);
       border: none;
+    }
+
+    &[data-init] {
+      display: block;
     }
 
     &.active {
