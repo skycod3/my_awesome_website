@@ -3,6 +3,7 @@ import gsap from "gsap";
 import Draggable from "gsap/Draggable";
 
 import { Process } from "./process";
+import { Animation } from "./animation";
 
 type Buttons = {
   close?: HTMLElement | null;
@@ -55,9 +56,15 @@ export class Window {
     this.buttons.close?.addEventListener("click", () => this.close());
 
     document.querySelector(".processes")?.append(this.element);
+
+    gsap.set(this.element, { opacity: 0, scale: 0.9 });
+
+    Animation.animate({ element: this.element, animation: "fadeIn" }).play();
   }
 
   private close() {
-    Process.kill(this.pid);
+    Animation.animate({ element: this.element, animation: "fadeOut" })
+      .play()
+      .call(() => Process.kill(this.pid), [], 0.2);
   }
 }
