@@ -80,6 +80,18 @@ export class Window {
     Tab.deactivate(windowId);
   }
 
+  public static maximize(windowId: string) {
+    const element = document.querySelector(`.window[pid="${windowId}"]`);
+
+    if (!element) return;
+
+    Animation.animate({ element, animation: "zoomIn" }).play();
+
+    element.setAttribute("data-minimized", "false");
+
+    Tab.activate(windowId);
+  }
+
   private close() {
     Animation.animate({ element: this.element, animation: "fadeOut" })
       .play()
