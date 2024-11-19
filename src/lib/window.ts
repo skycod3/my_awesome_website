@@ -3,10 +3,12 @@ import gsap from "gsap";
 import Draggable from "gsap/Draggable";
 
 import { Process } from "./process";
+import { Tab } from "./tab";
 import { Animation } from "./animation";
 
 type Buttons = {
   close?: HTMLElement | null;
+  minimize?: HTMLElement | null;
 };
 
 interface WindowProps {
@@ -37,6 +39,8 @@ export class Window {
     gsap.registerPlugin(Draggable);
 
     this.buttons.close = this.element.querySelector("[data-type='close']");
+    // prettier-ignore
+    this.buttons.minimize = this.element.querySelector("[data-type='minimize']");
   }
 
   public init() {
@@ -54,12 +58,26 @@ export class Window {
     });
 
     this.buttons.close?.addEventListener("click", () => this.close());
+    // prettier-ignore
+    this.buttons.minimize?.addEventListener("click", () => Window.minimize(this.pid));
 
     document.querySelector(".processes")?.append(this.element);
 
     gsap.set(this.element, { opacity: 0, scale: 0.9 });
 
     Animation.animate({ element: this.element, animation: "fadeIn" }).play();
+  }
+
+  public static minimize(windowId: string) {
+    const element = document.querySelector(`.window[pid="${windowId}"]`);
+
+    if (!element) return;
+
+    Animation.animate({ element, animation: "zoomOut" }).play();
+
+    element.setAttribute("data-minimized", "true");
+
+    Tab.deactivate(windowId);
   }
 
   private close() {
