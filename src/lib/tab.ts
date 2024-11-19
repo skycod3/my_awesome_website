@@ -1,3 +1,5 @@
+import { Window } from "./window";
+
 interface TabProps {
   pid: string;
   target: string;
@@ -24,5 +26,15 @@ export class Tab {
     this.element.classList.add("active");
 
     document.querySelector(".tabs")?.append(this.element);
+
+    this.element.addEventListener("click", () => this.click());
+  }
+
+  private click() {
+    const window = document.querySelector(`.window[pid="${this.pid}"]`);
+    // prettier-ignore
+    const isWindowMinimized = window && window.getAttribute("data-minimized") === "true";
+
+    !isWindowMinimized ? Window.minimize(this.pid) : Window.maximize(this.pid);
   }
 }
