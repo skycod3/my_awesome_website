@@ -23,7 +23,8 @@ export class Tab {
   public init() {
     this.element.setAttribute("data-init", "true");
     this.element.setAttribute("data-window-target", this.pid);
-    this.element.classList.add("active");
+
+    Tab.activate(this.pid);
 
     document.querySelector(".tabs")?.append(this.element);
 
@@ -36,5 +37,12 @@ export class Tab {
     const isWindowMinimized = window && window.getAttribute("data-minimized") === "true";
 
     !isWindowMinimized ? Window.minimize(this.pid) : Window.maximize(this.pid);
+  }
+
+  public static activate(windowId: string) {
+    // prettier-ignore
+    const tab = document.querySelector(`.tab[data-window-target='${windowId}']`);
+
+    tab && tab.classList.add("active");
   }
 }
