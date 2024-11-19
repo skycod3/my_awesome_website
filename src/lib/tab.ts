@@ -45,4 +45,11 @@ export class Tab {
 
     tab && tab.classList.add("active");
   }
+
+  public static deactivate(windowId: string) {
+    // prettier-ignore
+    const tab = document.querySelector(`.tab[data-window-target='${windowId}']`);
+
+    tab && tab.classList.remove("active");
+  }
 }
