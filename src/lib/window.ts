@@ -39,8 +39,11 @@ export class Window {
   }
 
   public init() {
+    const windowTotal = document.querySelectorAll(".window").length;
+
     this.element.setAttribute("data-init", "true");
     this.element.setAttribute("pid", this.pid);
+    this.element.style.zIndex = String(1000 + windowTotal);
 
     Draggable.create(this.element, {
       type: "x,y",
