@@ -46,6 +46,7 @@ export class Window {
       type: "x,y",
       bounds: document.querySelector("main"),
       inertia: true,
+      zIndexBoost: false,
     });
 
     this.buttons.close?.addEventListener("click", () => this.close());
