@@ -24,7 +24,7 @@ export class Tab {
     this.element.setAttribute("data-init", "true");
     this.element.setAttribute("data-window-target", this.pid);
 
-    Tab.activate(this.pid);
+    this.element.classList.add("active");
 
     document.querySelector(".tabs")?.append(this.element);
 
